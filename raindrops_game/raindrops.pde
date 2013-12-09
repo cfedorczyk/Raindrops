@@ -1,24 +1,17 @@
-class raindrops {
+class raindrop {
   PVector loc;
   PVector vel;
-  PVector acc;
 
-  raindrops() {
+  raindrop() {
     loc = new PVector(random(width), 0);
-    vel = new PVector( 0, random(5)); 
-    acc = new PVector(random(-.45, .45), .1);
+    vel = new PVector( 0,5); 
   }
 
   void display() {
-    ellipse(loc.x, loc.y, 50);
+    ellipse(loc.x, loc.y, 25, 25);
   }
   void raining() {
     loc.add(vel);
-    vel.add(acc);
-    if (loc.x> width || loc.x <0 ||loc.y>height) {
-      loc.y=0;
-      loc.x=random(width);
-    }
   }
 }
-}
+
