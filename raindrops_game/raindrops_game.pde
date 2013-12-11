@@ -1,6 +1,8 @@
 int index = 1;
+int score = 0;
 raindrop[] r = new raindrop[105];
 Catcher catcher;
+startup op; //(Opening screen)
 boolean time = true;
 
 void setup() {
@@ -14,6 +16,7 @@ void setup() {
 
 void draw() {
   background(0);
+text("Score =" +score,width/2,height/2);
   if (second()%3 == 0 && time) {
     index++;
     time = false;
@@ -27,5 +30,7 @@ void draw() {
     catcher.catchDrop(r[i]);
   }
   catcher.display();
+  op.display?();
+  
 }
 
