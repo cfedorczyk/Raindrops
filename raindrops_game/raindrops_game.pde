@@ -1,36 +1,54 @@
-int index = 1;
-int score = 0;
-raindrop[] r = new raindrop[105];
+int index = 1; //This is for the individual raindrops.
+int score = 0; //Variable that keeps track of score.
+raindrop[] r = new raindrop[105]; //Array of raindrops.
 Catcher catcher;
 startup op; //(Opening screen)
-boolean time = true;
+boolean time = true; //A boolean to use for the time.
+boolean start = false; //A boolean to use for the start screen.
 
 void setup() {
   size (600, 600);
-  for ( int i = 0; i < r.length; i++) {
+  textSize(15);
+  for ( int i = 0; i < r.length; i++) { //This declares the classes to be used and where single raindrops are created.
     r[i] = new raindrop();
   }
   catcher = new Catcher();
+  op = new startup();
   frameRate(15);
 }
 
 void draw() {
-  background(0);
-text("Score =" +score,width/2,height/2);
-  if (second()%3 == 0 && time) {
-    index++;
-    time = false;
-  } 
-  else if (second()%3 == 1 && !time) {
-    time = true;
+
+  if (!start) { //This is to display the start screen.
+    background(0);
+    op.display();
+    text("Click guy to start",width/2,height-65);
   }
-  for ( int i = 0; i < index; i++) {
-    r[i].display();
-    r[i].raining();
-    catcher.catchDrop(r[i]);
+  else { //This plays the game after the start screen.
+    background(0);
+    text("Score =" +score, width/2, height/2);
+    if (second()%3 == 0 && time) {//This gives the raindrops set intervals to fall.
+      index++;
+      time = false;
+    }
+    else if (second()%3 == 1 && !time) {
+      time = true;
+    }
+    for ( int i = 0; i < index; i++) {//Here is where one applies the functions from the declared classes.
+      r[i].display();
+      r[i].raining();
+      catcher.catchDrop(r[i]);
+    }
+    catcher.display();
   }
-  catcher.display();
-  op.display?();
-  
+//  if(score = 10){
+//   text("Storytime!",width/2,height/2);
+//  }
+}
+
+void mousePressed() { //Used to make the boolean start true or not true. This changes the strat scren to the game.
+  if (mouseX < width && mouseX > width/2 && mouseY < height && mouseY > height/2){
+start=!start;
+  }
 }
 
