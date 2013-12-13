@@ -5,6 +5,7 @@ Catcher catcher;
 startup op; //(Opening screen)
 boolean time = true; //A boolean to use for the time.
 boolean start = false; //A boolean to use for the start screen.
+//boolean storytime = true;
 
 void setup() {
   size (600, 600);
@@ -41,7 +42,7 @@ void draw() {
     }
     catcher.display();
   }
-//  if(score = 10){
+//  if(storytime){
 //   text("Storytime!",width/2,height/2);
 //  }
 }
