@@ -9,6 +9,7 @@ Minim minim;
 AudioPlayer player;
 
 
+int lives = 10;
 int index = 1; //This is for the individual raindrops.
 int score = 0; //Variable that keeps track of score.
 raindrop[] r = new raindrop[105]; //Array of raindrops.
@@ -16,6 +17,8 @@ Catcher catcher;
 startup op; //(Opening screen)
 boolean time = true; //A boolean to use for the time.
 boolean start = false; //A boolean to use for the start screen.
+boolean lose = false;
+boolean win = false;
 //boolean storytime = true;
 
 void setup() {
@@ -37,11 +40,12 @@ void draw() {
   if (!start) { //This is to display the start screen.
     background(0);
     op.display();
-    text("Click guy to start",width/2,height-65);
+    text("Click guy to start", width/2, height-65);
   }
   else { //This plays the game after the start screen.
     background(0);
     text("Score =" +score, width/2, height/2);
+    text("Lives =" +lives, width/2, (height/2)+100);
     if (second()%3 == 0 && time) {//This gives the raindrops set intervals to fall.
       index++;
       time = false;
@@ -53,17 +57,23 @@ void draw() {
       r[i].display();
       r[i].raining();
       catcher.catchDrop(r[i]);
+      catcher.miss(r[i]);
     }
     catcher.display();
   }
-//  if(storytime){
-//   text("Storytime!",width/2,height/2);
-//  }
+  if (lose == true) {
+    background(0);
+    text("YOU LOSE!!!!!!", width/2, height/2);
+  }
+  if (win == true) {
+    background(0);
+    text("YOU win!!!!!!", width/2, height/2);
+  }
 }
 
 void mousePressed() { //Used to make the boolean start true or not true. This changes the strat scren to the game.
-  if (mouseX < width && mouseX > width/2 && mouseY < height && mouseY > height/2){
-start=!start;
+  if (mouseX < width && mouseX > width/2 && mouseY < height && mouseY > height/2) {
+    start=!start;
   }
 }
 
