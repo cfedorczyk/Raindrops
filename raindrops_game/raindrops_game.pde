@@ -65,9 +65,12 @@ void draw() {
     background(0);
     text("YOU LOSE!!!!!!", width/2, height/2);
   }
-  if (win == true) {
-    background(0);
-    text("YOU win!!!!!!", width/2, height/2);
+  if (score == 10) {
+    win = true;
+    if (win == true) {
+      background(0);
+      text("YOU win!!!!!!", width/2, height/2);
+    }
   }
 }
 
