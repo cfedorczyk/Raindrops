@@ -1,3 +1,14 @@
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+Minim minim;
+AudioPlayer player;
+
+
 int index = 1; //This is for the individual raindrops.
 int score = 0; //Variable that keeps track of score.
 raindrop[] r = new raindrop[105]; //Array of raindrops.
@@ -16,6 +27,9 @@ void setup() {
   catcher = new Catcher();
   op = new startup();
   frameRate(15);
+  minim = new Minim(this);
+  player = minim.loadFile("Voldemort.mp3");
+  player.loop();
 }
 
 void draw() {
