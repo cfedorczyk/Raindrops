@@ -8,8 +8,9 @@ import ddf.minim.effects.*;
 Minim minim;
 AudioPlayer player;
 
-
-int lives = 10;
+PImage img;
+PVector loc;
+int lives = 1;
 int index = 1; //This is for the individual raindrops.
 int score = 0; //Variable that keeps track of score.
 raindrop[] r = new raindrop[105]; //Array of raindrops.
@@ -33,6 +34,8 @@ void setup() {
   minim = new Minim(this);
   player = minim.loadFile("Voldemort.mp3");
   player.loop();
+  img = loadImage("crying.png");
+  loc = new PVector(width/2, height/2);
 }
 
 void draw() {
@@ -63,20 +66,35 @@ void draw() {
   }
   if (lose == true) {
     background(0);
-    text("YOU LOSE!!!!!!", width/2, height/2);
+    text("TIME TO BE DEMENTED", width/2, height/2);
+    image(img, loc.x, loc.y);
   }
-  if (score == 10) {
+  if (score == 1) {
     win = true;
     if (win == true) {
       background(0);
-      text("YOU win!!!!!!", width/2, height/2);
+      text("STORY TIME", width/2, height/2);
+      image(img, loc.x, loc.y);
     }
   }
 }
 
 void mousePressed() { //Used to make the boolean start true or not true. This changes the strat scren to the game.
-  if (mouseX < width && mouseX > width/2 && mouseY < height && mouseY > height/2) {
+  if (start == false && lose == false && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start=!start;
+  }
+  if (start == false && lose == true && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    lives = 10;
+    score = 0;
+  }
+  if (start == false && lose == false && win == true && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives = 10;
+    score = 0;
   }
 }
 
