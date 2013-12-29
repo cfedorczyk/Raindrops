@@ -18,7 +18,7 @@ class Catcher {
   }
   void catchDrop(raindrop drop) { //Catching raindrops, increases the score.
     if (loc.dist(drop.loc) < 40) {
-      drop.loc.set(-width, height*10);
+      drop.loc.set(-width, height*-10);
       drop.vel.set(0, 0);
       score++;
     }

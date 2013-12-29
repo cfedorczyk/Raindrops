@@ -1,14 +1,18 @@
-import ddf.minim.spi.*;
-import ddf.minim.signals.*;
-import ddf.minim.*;
-import ddf.minim.analysis.*;
-import ddf.minim.ugens.*;
-import ddf.minim.effects.*;
-
-Minim minim;
-AudioPlayer player;
-
+//import ddf.minim.spi.*;
+//import ddf.minim.signals.*;
+//import ddf.minim.*;
+//import ddf.minim.analysis.*;
+//import ddf.minim.ugens.*;
+//import ddf.minim.effects.*;
+//
+//Minim minim;
+//AudioPlayer player;
 PImage img;
+//PImage img1;
+//PImage img2;
+//PImage img3;
+//PImage img4;
+//PImage img5;
 PVector loc;
 int lives = 1;
 int index = 1; //This is for the individual raindrops.
@@ -31,10 +35,15 @@ void setup() {
   catcher = new Catcher();
   op = new startup();
   frameRate(15);
-  minim = new Minim(this);
-  player = minim.loadFile("Voldemort.mp3");
-  player.loop();
+//  minim = new Minim(this);
+//  player = minim.loadFile("Voldemort.mp3");
+//  player.loop();
   img = loadImage("crying.png");
+//img1 = loadImage("crying.png");
+//img2 = loadImage("crying.png");
+//img3 = loadImage("crying.png");
+//img4 = loadImage("crying.png");
+//img5 = loadImage("crying.png");
   loc = new PVector(width/2, height/2);
 }
 
@@ -65,11 +74,13 @@ void draw() {
     catcher.display();
   }
   if (lose == true) {
+    start = false;
     background(0);
     text("TIME TO BE DEMENTED", width/2, height/2);
     image(img, loc.x, loc.y);
   }
   if (score == 1) {
+    start = false;
     win = true;
     if (win == true) {
       background(0);
@@ -81,7 +92,7 @@ void draw() {
 
 void mousePressed() { //Used to make the boolean start true or not true. This changes the strat scren to the game.
   if (start == false && lose == false && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
-    start=!start;
+    start=true;
   }
   if (start == false && lose == true && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start = true;
@@ -93,8 +104,8 @@ void mousePressed() { //Used to make the boolean start true or not true. This ch
     start = true;
     lose = false;
     win = false;
-    lives = 10;
-    score = 0;
+    lives = 1;
+    score = 2;
   }
 }
 

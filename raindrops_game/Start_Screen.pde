@@ -11,7 +11,7 @@ class startup {
   void display() { //Displays what is seen in the start screen.
 
     text("Tears are the gateway to one's past.", width/2, height/2);
-    imageMode(CENTER);
+    imageMode(CORNER);
     image(img, loc.x, loc.y);
   }
 }
