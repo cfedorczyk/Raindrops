@@ -1,20 +1,22 @@
-//import ddf.minim.spi.*;
-//import ddf.minim.signals.*;
-//import ddf.minim.*;
-//import ddf.minim.analysis.*;
-//import ddf.minim.ugens.*;
-//import ddf.minim.effects.*;
-//
-//Minim minim;
-//AudioPlayer player;
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+Minim minim;
+AudioPlayer player;
 PImage img;
-//PImage img1;
-//PImage img2;
-//PImage img3;
-//PImage img4;
-//PImage img5;
+PImage img1;
+PImage img2;
+PImage img3;
+PImage img4;
+PImage img5;
+PImage img6;
+PImage img7;
 PVector loc;
-int lives = 1;
+int lives = 10;
 int index = 1; //This is for the individual raindrops.
 int score = 0; //Variable that keeps track of score.
 raindrop[] r = new raindrop[105]; //Array of raindrops.
@@ -24,7 +26,7 @@ boolean time = true; //A boolean to use for the time.
 boolean start = false; //A boolean to use for the start screen.
 boolean lose = false;
 boolean win = false;
-//boolean storytime = true;
+
 
 void setup() {
   size (600, 600);
@@ -35,15 +37,18 @@ void setup() {
   catcher = new Catcher();
   op = new startup();
   frameRate(15);
-//  minim = new Minim(this);
-//  player = minim.loadFile("Voldemort.mp3");
-//  player.loop();
-  img = loadImage("crying.png");
-//img1 = loadImage("crying.png");
-//img2 = loadImage("crying.png");
-//img3 = loadImage("crying.png");
-//img4 = loadImage("crying.png");
-//img5 = loadImage("crying.png");
+  minim = new Minim(this);
+  player = minim.loadFile("Voldemort.mp3");
+  player.loop();
+  img =  loadImage("crying.png");
+  img1 = loadImage("young-snape.jpg");
+  img2 = loadImage("lily-friendzoning.jpg");
+  img3 = loadImage("young-james.jpg");
+  img4 = loadImage("bullied-snape.jpg");
+  img5 = loadImage("In-the-end.jpg");
+  img6 = loadImage("friendzoned-snape.jpg");
+  img7 = loadImage("snape's-hair.jpg");
+
   loc = new PVector(width/2, height/2);
 }
 
@@ -75,7 +80,7 @@ void draw() {
   }
   if (lose == true) {
     start = false;
-    background(0);
+    background(loadImage("Voldemort.jpg"));
     text("TIME TO BE DEMENTED", width/2, height/2);
     image(img, loc.x, loc.y);
   }
@@ -84,7 +89,49 @@ void draw() {
     win = true;
     if (win == true) {
       background(0);
-      text("STORY TIME", width/2, height/2);
+      text("Here is young Lily and Snape becoming best friends.", 0, 400);
+      image(img1, 0, 0);
+
+      image(img, loc.x, loc.y);
+    }
+  }
+  if (score == 3) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("Here we start to see the the forbidden curse", 0, 365);
+      text("of friendzoning. Where are your eyes gonig", 0, 385);
+      text("Lily?",0,405);
+      image(img2, 0, 0);
+      image(img3, 250,500);
+      image(img, loc.x, loc.y);
+    }
+  }
+  if (score == 5) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("Now Snape starts to get bullied.", 0, 400);
+      image(img4, 0, 0);
+    }
+  }
+  if (score == 7) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("STORY TIMESZZZZZZ", width/2, height/2);
+      image(img, loc.x, loc.y);
+    }
+  }
+  if (score == 9) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("STORY TIMEE", width/2, height/2);
       image(img, loc.x, loc.y);
     }
   }
@@ -100,11 +147,39 @@ void mousePressed() { //Used to make the boolean start true or not true. This ch
     lives = 10;
     score = 0;
   }
+  if (start == false && lose == false && win == true && score == 9 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives = 10;
+    score = 10;
+  }
+  if (start == false && lose == false && win == true && score == 7 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives = 10;
+    score = 8;
+  }
+  if (start == false && lose == false && win == true && score == 5 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives = 10;
+    score = 6;
+  }
+  if (start == false && lose == false && win == true && score == 3 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives = 10;
+    score = 4;
+  }
   if (start == false && lose == false && win == true && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start = true;
     lose = false;
     win = false;
-    lives = 1;
+    lives = 10;
     score = 2;
   }
 }

@@ -10,9 +10,7 @@ class raindrop { //The class that creates a single raindrop.
   }
 
   void display() { //This funcions displays.
-   // ellipse(loc.x, loc.y, 25, 25); //What shape the raindrop is
-    fill(15, 35, 200);
-    image(img,loc.x,loc.y,25,25);
+    image(img,loc.x,loc.y,25,25); //This is the image of a teardrop that is being used as the raindrop.
   }
   void raining() {//This function adds the velocity to the location to move the raindrop.
     loc.add(vel);
