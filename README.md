@@ -29,6 +29,8 @@ If the raindrop is caught, a score variable will increase.
 
 The catcher will be at a set y position will the x following the mouse.
 
+(After final commit about bugs and stuff you should know abut game) - The only glitch I think could happen is two raindrops falling at the same time and not being caught by the catcher resulting in a minus two to the amount of lives resulting in a -1 in the lives. I tested it out to see if this would happen and nothing did and I'm not sure if it would but I thought that was something that could happen. Also after each page in my case or level, I add a point so the score does not stay the same and result in a sort of gifing state due to the fact that it is on the same score.
+
 
 
 
