@@ -16,7 +16,7 @@ PImage img5;
 PImage img6;
 PImage img7;
 PVector loc;
-int lives = 10;
+int lives = 1;
 int index = 1; //This is for the individual raindrops.
 int score = 0; //Variable that keeps track of score.
 raindrop[] r = new raindrop[105]; //Array of raindrops.
@@ -57,7 +57,8 @@ void draw() {
   if (!start) { //This is to display the start screen.
     background(0);
     op.display();
-    text("Click guy to start", width/2, height-65);
+    text("Click guy to start.", 275, height-65);
+    text("He will be your guide.", 275, height-45);
   }
   else { //This plays the game after the start screen.
     background(0);
@@ -84,7 +85,7 @@ void draw() {
     text("TIME TO BE DEMENTED", width/2, height/2);
     image(img, loc.x, loc.y);
   }
-  if (score == 1) {
+  if (score == 3) {
     start = false;
     win = true;
     if (win == true) {
@@ -95,43 +96,68 @@ void draw() {
       image(img, loc.x, loc.y);
     }
   }
-  if (score == 3) {
+  if (score == 6) {
     start = false;
     win = true;
     if (win == true) {
       background(0);
-      text("Here we start to see the the forbidden curse", 0, 365);
-      text("of friendzoning. Where are your eyes gonig", 0, 385);
-      text("Lily?",0,405);
+      text("Here we start to see  the forbidden curse", 0, 365);
+      text("of friendzoning. Where are your eyes going", 0, 385);
+      text("Lily?", 0, 405);
       image(img2, 0, 0);
-      image(img3, 250,500);
+      image(img3, 250, 400);
       image(img, loc.x, loc.y);
     }
   }
-  if (score == 5) {
+  if (score ==9) {
     start = false;
     win = true;
     if (win == true) {
       background(0);
-      text("Now Snape starts to get bullied.", 0, 400);
+      text("Now Snape starts to get bullied by James Potter.", 0, 400);
       image(img4, 0, 0);
-    }
-  }
-  if (score == 7) {
-    start = false;
-    win = true;
-    if (win == true) {
-      background(0);
-      text("STORY TIMESZZZZZZ", width/2, height/2);
       image(img, loc.x, loc.y);
     }
   }
-  if (score == 9) {
+  if (score == 12) {
     start = false;
     win = true;
     if (win == true) {
       background(0);
-      text("STORY TIMEE", width/2, height/2);
+      text("In the end Lily picks James Potter but", 0, 365 );
+      text("Snape never stopped loving her. Even after", 0, 385);
+      text("her horrible death at the hands of Voldemort.", 0, 405);
+      image(img5, 0, 0);
+      image(img, loc.x, loc.y);
+    }
+  }
+  if (score == 16) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("The picture above is the moral.", 0, 365);
+      image(img6, 0, 0);
+      image(img, loc.x, loc.y);
+    }
+  }
+  if (score == 20) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("Now he flips his hair for a living. ", 0, 425);
+      text("Oh and he teaches at Hogwarts.", 0, 450);
+      image(img7, 0, 0);
+      image(img, loc.x, loc.y);
+    }
+  }
+  if (score == 25) {
+    start = false;
+    win = true;
+    if (win == true) {
+      background(0);
+      text("Now you know the story of Severus Snape. The End", 175, height/2);
       image(img, loc.x, loc.y);
     }
   }
@@ -144,43 +170,57 @@ void mousePressed() { //Used to make the boolean start true or not true. This ch
   if (start == false && lose == true && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start = true;
     lose = false;
-    lives = 10;
+    lives =1;
     score = 0;
+  }
+  if (start == false && lose == false && win == true && score == 25 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives++;
+    score = 26;
+  }
+  if (start == false && lose == false && win == true && score == 20 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives++;
+    score = 21;
+  }
+  if (start == false && lose == false && win == true && score == 16 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives++;
+    score = 17;
+  }
+  if (start == false && lose == false && win == true && score == 12 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+    start = true;
+    lose = false;
+    win = false;
+    lives++;
+    score = 13;
   }
   if (start == false && lose == false && win == true && score == 9 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start = true;
     lose = false;
     win = false;
-    lives = 10;
+    lives++;
     score = 10;
   }
-  if (start == false && lose == false && win == true && score == 7 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score ==6 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start = true;
     lose = false;
     win = false;
-    lives = 10;
-    score = 8;
-  }
-  if (start == false && lose == false && win == true && score == 5 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
-    start = true;
-    lose = false;
-    win = false;
-    lives = 10;
-    score = 6;
+    lives ++;
+    score = 7;
   }
   if (start == false && lose == false && win == true && score == 3 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
     start = true;
     lose = false;
     win = false;
-    lives = 10;
+    lives++;
     score = 4;
-  }
-  if (start == false && lose == false && win == true && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
-    start = true;
-    lose = false;
-    win = false;
-    lives = 10;
-    score = 2;
   }
 }
 
