@@ -10,7 +10,7 @@ AudioPlayer player; // For the soundtrack playing throughout
 PImage img;
 PImage img1;
 PImage img2;
-PImage img3;
+PImage img3; 
 PImage img4;
 PImage img5;
 PImage img6;
@@ -157,64 +157,65 @@ void draw() {
     if (win == true) {
       background(0);
       text("Now you know the story of Severus Snape. The End", 175, height/2);
+      text("Restart?",275,height-45);
       image(img, loc.x, loc.y);
     }
   }
 }
 
 void mousePressed() { 
-  if (start == false && lose == false && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == false && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start=true; //Used to make the boolean start true or not true. This changes the strat screen to the game.
   }
-  if (start == false && lose == true && win == false && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) { //This makes the lose screen appear.
+  if (start == false && lose == true && win == false && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) { //This makes the lose screen appear.
     start = true;
     lose = false;
     lives =1;
     score = 0;
   }
-  if (start == false && lose == false && win == true && score == 25 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) { // This makes the page appear and grants one extra life and it is the same as all the ones below.
+  if (start == false && lose == false && win == true && score == 25 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) { // This makes the page appear and grants one extra life and it is the same as all the ones below.
     start = true;
     lose = false;
     win = false;
-    lives++;
-    score = 26;
+    lives=1;
+    score = 0;
   }
-  if (start == false && lose == false && win == true && score == 20 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score == 20 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start = true;
     lose = false;
     win = false;
     lives++;
     score = 21;
   }
-  if (start == false && lose == false && win == true && score == 16 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score == 16 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start = true;
     lose = false;
     win = false;
     lives++;
     score = 17;
   }
-  if (start == false && lose == false && win == true && score == 12 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score == 12 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start = true;
     lose = false;
     win = false;
     lives++;
     score = 13;
   }
-  if (start == false && lose == false && win == true && score == 9 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score == 9 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start = true;
     lose = false;
     win = false;
     lives++;
     score = 10;
   }
-  if (start == false && lose == false && win == true && score ==6 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score ==6 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start = true;
     lose = false;
     win = false;
     lives ++;
     score = 7;
   }
-  if (start == false && lose == false && win == true && score == 3 && mouseX < loc.x+img.width && mouseX > loc.x-img.width && mouseY < loc.y+img.height && mouseY > img.height-loc.y) {
+  if (start == false && lose == false && win == true && score == 3 && mouseX < loc.x+img.width && mouseX > loc.x && mouseY < loc.y+img.height && mouseY > loc.y) {
     start = true;
     lose = false;
     win = false;
